@@ -11,9 +11,9 @@ import UIKit
 class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var profileImg: UIImageView!
+    @IBOutlet weak var textLbl: UILabel!
     @IBOutlet weak var firstNameLbl: UILabel!
     @IBOutlet weak var lastNameLbl: UILabel!
-    @IBOutlet weak var textLbl: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

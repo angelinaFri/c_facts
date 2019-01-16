@@ -13,7 +13,7 @@ import SwiftyJSON
 
 class CatFactsVC: UITableViewController {
 
-    var usersData: [UserModel] = []
+    var usersData = [AnyObject]()
 
 
     override func viewDidLoad() {
@@ -22,55 +22,51 @@ class CatFactsVC: UITableViewController {
 
         let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: "cell")
-//        self.tableView.estimatedRowHeight = 100.0
-//        self.tableView.rowHeight = UITableView.automaticDimension
 
         fetchUserData()
+
+
     }
 
     func fetchUserData() {
-        DispatchQueue.main.async {
-            Alamofire.request("https://cat-fact.herokuapp.com/facts").responseJSON(completionHandler: { (response) in
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    print(json)
-//                    let data = json["all"]
-//                    data["_id"].array?.forEach({(id) in
-//                        let id = UserModel(firstName: id["first"].stringValue, lastName: id["last"].stringValue, text: id["text"].stringValue )
-//                        self.usersData.append(id)
-//                    })
-//                    self.tableView.reloadData()
-                case .failure(let error):
-                    print(error.localizedDescription)
+        Alamofire.request("https://cat-fact.herokuapp.com/facts").responseJSON { (response) in
+            let result = response.result
+            if let dict = result.value as? Dictionary<String,AnyObject> {
+                if let innerDict = dict["all"] {
+                    self.usersData = innerDict as! [AnyObject]
+                    self.tableView.reloadData()
                 }
-        })
+            }
+        }
     }
-}
-    
-
-//        func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.usersData.count
-     return 2
+        return usersData.count
+        
+
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-//        cell.firstNameLbl.text = self.usersData[indexPath.row].firstName
-//        cell.lastNameLbl.text = self.usersData[indexPath.row].lastName
-//        cell.textLbl.text = self.usersData[indexPath.row].text
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
+
+
+        let text = usersData[indexPath.row]["text"]
+        cell.textLbl.text = text as? String
+
+        
+        let firstName = usersData[indexPath.row]["user"]["name"]["first"]
+        cell.firstNameLbl.text = firstName as? String
+
+
+        let lastName = usersData[indexPath.row]["last"]
+        cell.lastNameLbl.text = lastName as? String
+
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 155.0
-    }
-    
+
 }
+
 
 
 
