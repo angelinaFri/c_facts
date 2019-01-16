@@ -19,12 +19,20 @@ class CatFactsVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Cats Facts"
+        
+
         let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: "cell")
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 150
 
         fetchUserData()
+    }
+
+
+    @IBAction func logOutBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToLoginPage", sender: self)
     }
 
     func fetchUserData() {
@@ -46,6 +54,7 @@ class CatFactsVC: UITableViewController {
             }
         }
     }
+
 }
 
 extension CatFactsVC {

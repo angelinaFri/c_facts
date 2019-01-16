@@ -53,6 +53,7 @@ class LoginVC: UIViewController {
             showAlert(title: "Wrong data", message: "Your email or password is incorrect")
         } else if loginEmailFld.text == savedEmail && loginPassFld.text == savedPSW {
             print("Registration successful")
+            UserDefaults.standard.setIsLoggedIn(value: true)
             navigateToMainInterface()
         }
 
