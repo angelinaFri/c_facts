@@ -13,62 +13,56 @@ import SwiftyJSON
 
 class CatFactsVC: UITableViewController {
 
-    var usersData = [AnyObject]()
+    var factData = [Fact]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         let cellNib = UINib(nibName: "TableViewCell", bundle: nil)
         self.tableView.register(cellNib, forCellReuseIdentifier: "cell")
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 150
 
         fetchUserData()
-
-
     }
 
     func fetchUserData() {
+
         Alamofire.request("https://cat-fact.herokuapp.com/facts").responseJSON { (response) in
             let result = response.result
+
             if let dict = result.value as? Dictionary<String,AnyObject> {
-                if let innerDict = dict["all"] {
-                    self.usersData = innerDict as! [AnyObject]
+
+                if let facts = dict["all"] as? [Dictionary<String,AnyObject>] {
+
+                    for fact in facts {
+
+                        let fact = Fact(factDict: fact)
+                        self.factData.append(fact)
+                    }
                     self.tableView.reloadData()
                 }
             }
         }
     }
+}
+
+extension CatFactsVC {
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersData.count
-        
-
+        return factData.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! TableViewCell
-
-
-        let text = usersData[indexPath.row]["text"]
-        cell.textLbl.text = text as? String
-
-        
-        let firstName = usersData[indexPath.row]["user"]["name"]["first"] ?? ""
-        cell.firstNameLbl.text = firstName as? String
-
-
-
-
-        let lastName = usersData[indexPath.row]["last"]
-        cell.lastNameLbl.text = lastName as? String
-
+        cell.textLbl.text = factData[indexPath.row].text
+        cell.firstNameLbl.text = factData[indexPath.row].firstName
+        cell.lastNameLbl.text = factData[indexPath.row].lastName
         return cell
     }
-
-
 }
-
 
 
 
