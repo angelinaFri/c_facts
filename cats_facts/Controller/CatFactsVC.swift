@@ -54,8 +54,10 @@ class CatFactsVC: UITableViewController {
         cell.textLbl.text = text as? String
 
         
-        let firstName = usersData[indexPath.row]["user"]["name"]["first"]
+        let firstName = usersData[indexPath.row]["user"]["name"]["first"] ?? ""
         cell.firstNameLbl.text = firstName as? String
+
+
 
 
         let lastName = usersData[indexPath.row]["last"]
