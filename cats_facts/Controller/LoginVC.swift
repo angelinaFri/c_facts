@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var loginEmailFld: UITextField!
     @IBOutlet weak var loginPassFld: UITextField!
@@ -22,7 +22,17 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        loginEmailFld.delegate = self
+        loginPassFld.delegate = self
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func backToRegPressed(_ sender: Any) {
@@ -36,7 +46,7 @@ class LoginVC: UIViewController {
         if let email = defaults.object(forKey: "email") as? String {
             savedEmail = email
             print(email)
-            if let password = defaults.object(forKey: "password") as? String {
+        if let password = defaults.object(forKey: "password") as? String {
             savedPSW = password
             print(password)
             }
@@ -52,7 +62,6 @@ class LoginVC: UIViewController {
         } else if loginEmailFld.text != savedEmail || loginPassFld.text != savedPSW {
             showAlert(title: "Wrong data", message: "Your email or password is incorrect")
         } else if loginEmailFld.text == savedEmail && loginPassFld.text == savedPSW {
-            print("Registration successful")
             UserDefaults.standard.setIsLoggedIn(value: true)
             navigateToMainInterface()
         }

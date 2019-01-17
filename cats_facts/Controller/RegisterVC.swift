@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailFld: UITextField!
     @IBOutlet weak var passwordFld: UITextField!
@@ -17,10 +17,25 @@ class RegisterVC: UIViewController {
     let defaults = UserDefaults.standard
 
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emailFld.delegate = self
+        passwordFld.delegate = self
+        confirmPassFld.delegate = self
+
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
 
     @IBAction func alreadyAccBtn(_ sender: Any) {
 
@@ -49,6 +64,8 @@ class RegisterVC: UIViewController {
         }
 
     }
+
+
 }
 
 

@@ -65,8 +65,8 @@
 		580C924521ECACE900AF404C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				580C923F21EB756200AF404C /* LoginVC.swift */,
 				58FBFC1D21EB39F9009D5A52 /* RegisterVC.swift */,
+				580C923F21EB756200AF404C /* LoginVC.swift */,
 				58FBFC1B21EB39F9009D5A52 /* AppDelegate.swift */,
 				5803D7AA21EE3F8F00171FD9 /* MainNavigationVC.swift */,
 				58925C5B21ED0B110068B09C /* CatFactsVC.swift */,
