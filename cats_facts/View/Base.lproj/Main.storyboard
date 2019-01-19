@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--RegisterVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="RegisterVC" customModule="cats_facts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" id="BYZ-38-t0r" customClass="RegisterVC" customModule="cats_facts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,8 +74,7 @@
                                     <color key="titleColor" red="0.31603628396987915" green="0.11380744725465775" blue="0.19597864151000977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="alreadyAccBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3AM-Tt-jYP"/>
-                                    <action selector="registerBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fdZ-sw-pMv"/>
+                                    <action selector="alreadyAccBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hQJ-Ne-laI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -105,7 +104,6 @@
                         <outlet property="confirmPassFld" destination="cgH-kk-ufA" id="BM1-Gh-1Ug"/>
                         <outlet property="emailFld" destination="8Wy-UU-Kpe" id="3oa-F0-ngL"/>
                         <outlet property="passwordFld" destination="cqF-ZG-Rhq" id="D4C-ZY-TWz"/>
-                        <segue destination="3ya-6h-BeD" kind="show" identifier="goToLoginPage" id="7RZ-Hf-Vvp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -115,7 +113,7 @@
         <!--Cat FactsVC-->
         <scene sceneID="oHB-ca-Ggt">
             <objects>
-                <tableViewController id="Tmn-Cj-Aev" customClass="CatFactsVC" customModule="cats_facts" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CatFactsVC" id="Tmn-Cj-Aev" customClass="CatFactsVC" customModule="cats_facts" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wIZ-EV-lot">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -140,7 +138,6 @@
                             <color key="tintColor" red="0.316036284" green="0.1138074473" blue="0.19597864149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logOutBtnPressed:" destination="Tmn-Cj-Aev" id="qaR-oP-Fdd"/>
-                                <segue destination="3ya-6h-BeD" kind="show" identifier="goToLoginPage" id="qsI-1U-H2X"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -168,7 +165,7 @@
         <!--LoginVC-->
         <scene sceneID="Lfd-GQ-Hwl">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="3ya-6h-BeD" customClass="LoginVC" customModule="cats_facts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="3ya-6h-BeD" customClass="LoginVC" customModule="cats_facts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hC6-uD-wdf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,7 +216,6 @@
                                     <color key="titleColor" red="0.316036284" green="0.1138074473" blue="0.19597864149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="backBtnPressed:" destination="n2g-wk-DbQ" eventType="touchUpInside" id="DuF-Sa-kPT"/>
                                     <action selector="backToRegPressed:" destination="3ya-6h-BeD" eventType="touchUpInside" id="fo6-DL-VoX"/>
                                 </connections>
                             </button>
@@ -243,11 +239,9 @@
                     <connections>
                         <outlet property="loginEmailFld" destination="qlk-ny-vcy" id="uVC-TK-aZf"/>
                         <outlet property="loginPassFld" destination="olc-LC-L6D" id="bC5-ia-KVp"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToRegister" id="uNB-Y5-k58"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dgf-gv-c4Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="n2g-wk-DbQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="375.36231884057975" y="-214.28571428571428"/>
         </scene>
@@ -258,7 +252,4 @@
         <image name="background_register" width="414" height="896"/>
         <image name="cat" width="53" height="52"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7RZ-Hf-Vvp"/>
-    </inferredMetricsTieBreakers>
 </document>

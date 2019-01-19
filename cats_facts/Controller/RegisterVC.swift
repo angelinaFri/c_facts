@@ -17,13 +17,12 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
     let defaults = UserDefaults.standard
 
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailFld.delegate = self
-        passwordFld.delegate = self
-        confirmPassFld.delegate = self
+        emailFld?.delegate = self
+        passwordFld?.delegate = self
+        confirmPassFld?.delegate = self
 
     }
 
@@ -39,7 +38,10 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
 
     @IBAction func alreadyAccBtn(_ sender: Any) {
 
-        performSegue(withIdentifier: "goToLoginPage", sender: self)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+
     }
     
 
@@ -59,8 +61,9 @@ class RegisterVC: UIViewController, UITextFieldDelegate {
             // MARK: - Save permanent data
             defaults.set(emailFld.text, forKey: "email")
             defaults.set(confirmPassFld.text, forKey: "password")
+            defaults.set(true, forKey: "userLoggedIn")
             navigateToMainInterface()
-            print("Registration successful")
+          
         }
 
     }

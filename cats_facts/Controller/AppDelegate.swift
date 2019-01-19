@@ -17,8 +17,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
-    
+
+        // MARK: - Define that RegisterVC is initial VC
+        let regVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterVC") as? RegisterVC //or the homeController
+        var navController = UINavigationController()
+
+        navController = UINavigationController(rootViewController: regVC!)
+
+        window?.rootViewController = navController
+        window?.makeKeyAndVisible()
+
+        // MARK: - Save session
+        let defaults = UserDefaults.standard
+
+        if defaults.bool(forKey: "userLoggedIn") {
+            
+            navigateToMainInterface()
+
+        } else {
+
+            navigateToLoginVC()
+        }
+
         return true
     }
 
@@ -46,5 +66,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
 
+    func navigateToMainInterface() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+        guard let mainNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "MainNavigationController") as? MainNavigationVC else {
+            return
+        }
+        window?.rootViewController = mainNavigationVC
+        window?.makeKeyAndVisible()
+    }
+
+    func navigateToLoginVC() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+        guard let loginNavigationVC = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as? LoginVC else {
+            return
+        }
+        window?.rootViewController = loginNavigationVC
+        window?.makeKeyAndVisible()
+    }
+
+
 }
+
 

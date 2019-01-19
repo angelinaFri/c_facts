@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class CatFactsVC: UITableViewController {
 
+    let defaults = UserDefaults.standard
     var factData = [Fact]()
 
 
@@ -32,7 +33,11 @@ class CatFactsVC: UITableViewController {
 
 
     @IBAction func logOutBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToLoginPage", sender: self)
+        defaults.set(false, forKey: "userLoggedIn")
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+        
     }
 
     func fetchUserData() {

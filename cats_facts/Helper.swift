@@ -24,6 +24,7 @@ public func isValidPassword(passStr: String) -> Bool {
 
 
 extension UIViewController {
+    
     func navigateToMainInterface() {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
@@ -43,20 +44,8 @@ extension UIViewController {
     }
 }
 
-extension UserDefaults {
 
-    enum UserDefaultsKeys: String {
-        case isLoggedIn
-    }
 
-    func setIsLoggedIn(value: Bool) {
-        set(value, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
-        synchronize()
-    }
 
-    func isLoggedIn() -> Bool {
-        return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
-    }
-}
 
 
