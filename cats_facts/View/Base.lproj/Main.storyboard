@@ -67,7 +67,7 @@
                                     <action selector="registerBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NfA-Jd-91m"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLe-53-uvb">
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLe-53-uvb">
                                 <rect key="frame" x="89" y="556" width="236" height="38"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
                                 <state key="normal" title="Already have an account?">
@@ -209,10 +209,10 @@
                                     <action selector="loginBtn:" destination="3ya-6h-BeD" eventType="touchUpInside" id="JOY-9c-Y9V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-jY-sCH">
-                                <rect key="frame" x="91" y="432" width="232" height="28"/>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsm-jY-sCH">
+                                <rect key="frame" x="27.5" y="432" width="359" height="28"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="19"/>
-                                <state key="normal" title="Back to REGISTER page" image="back_btn">
+                                <state key="normal" title="Don't have an account? Register here" image="back_btn">
                                     <color key="titleColor" red="0.316036284" green="0.1138074473" blue="0.19597864149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -250,6 +250,6 @@
         <image name="back_btn" width="16" height="28"/>
         <image name="background_login" width="414" height="896"/>
         <image name="background_register" width="414" height="896"/>
-        <image name="cat" width="53" height="52"/>
+        <image name="cat" width="227" height="241"/>
     </resources>
 </document>
